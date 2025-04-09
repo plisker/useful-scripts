@@ -33,7 +33,7 @@ for file in *.mp4; do
       # Now stabilize the video using the .trf file if it exists
       if [[ -f "$trf_file" ]]; then
         echo "Stabilizing $file using $trf_file..."
-        ffmpeg -i "$file" -vf vidstabtransform=smoothing=30:interpol=1:optzoom=1:input="$trf_file" "$output_file"
+        ffmpeg -i "$file" -vf vidstabtransform=smoothing=30:interpol=1:optzoom=1:input="$trf_file" -pix_fmt yuv420p "$output_file"
       fi
     else
       echo "$output_file already exists, skipping stabilization..."
